@@ -1,0 +1,234 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ProjectSub
+</name>
+</assembly>
+<members>
+<member name="T:Project2.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources._1_Documents_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources._2_Documents_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources._62873_bookmark_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Add_SpaceBeforeParagraph_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.back_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Black_Documents_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Calendar_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Calendar_icon__1_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Calendar_icon__2_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.document_margins_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.dollar_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Firstline1_Movie_Mega_Pack_4_The_Bank_Job">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Line_Spacing_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Line_SpacingText_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Mimetypes_application_pgp_signature_icon__1_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.miniDelete">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.miniDSaddIcon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.miniUpdate">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.name_card_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Pages_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.picture_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Printing_One_Page_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.settings_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.Smiley_dollar_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.User_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.user_search_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.UserFindiConMini">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.users_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Project2.My.Resources.Resources.write_paper_ink_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="T:Project2.ThisRibbonCollection">
+
+</member>
+<member name="M:Project2.ThisRibbonCollection.#ctor(Microsoft.Office.Tools.Ribbon.RibbonFactory)">
+
+</member>
+<member name="T:Project2.ThisAddIn">
+
+</member>
+<member name="M:Project2.ThisAddIn.#ctor(Microsoft.Office.Tools.Word.ApplicationFactory,System.IServiceProvider)">
+
+</member>
+<member name="M:Project2.ThisAddIn.Initialize">
+
+</member>
+<member name="M:Project2.ThisAddIn.FinishInitialization">
+
+</member>
+<member name="M:Project2.ThisAddIn.InitializeDataBindings">
+
+</member>
+<member name="M:Project2.ThisAddIn.InitializeCachedData">
+
+</member>
+<member name="M:Project2.ThisAddIn.InitializeData">
+
+</member>
+<member name="M:Project2.ThisAddIn.BindToData">
+
+</member>
+<member name="M:Project2.ThisAddIn.StartCaching(System.String)">
+
+</member>
+<member name="M:Project2.ThisAddIn.StopCaching(System.String)">
+
+</member>
+<member name="M:Project2.ThisAddIn.IsCached(System.String)">
+
+</member>
+<member name="M:Project2.ThisAddIn.BeginInitialization">
+
+</member>
+<member name="M:Project2.ThisAddIn.EndInitialization">
+
+</member>
+<member name="M:Project2.ThisAddIn.InitializeControls">
+
+</member>
+<member name="M:Project2.ThisAddIn.InitializeComponents">
+
+</member>
+<member name="M:Project2.ThisAddIn.NeedsFill(System.String)">
+
+</member>
+<member name="M:Project2.ThisAddIn.OnShutdown">
+
+</member>
+<member name="T:Project2.Globals">
+
+</member>
+<member name="M:Project2.Globals.#ctor">
+
+</member>
+</members>
+</doc>

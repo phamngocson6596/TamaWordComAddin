@@ -1,0 +1,25 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="TenThuKy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">(Son)</Value>
+    </Setting>
+    <Setting Name="DataLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\192.168.1.30\ho so chung\z.kh\KH.accdb</Value>
+    </Setting>
+    <Setting Name="TenThuKy_Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Freestyle Script, 12pt</Value>
+    </Setting>
+    <Setting Name="CongChungVien" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;Dương Phước Hoàng Khánh&lt;/string&gt;
+  &lt;string&gt;Dương Bích Tuyền&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="PermanentLisence" Type="System.String" Scope="User">
+      <Value Profile="(Default)">no</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
