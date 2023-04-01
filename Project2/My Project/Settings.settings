@@ -11,15 +11,16 @@
     <Setting Name="TenThuKy_Font" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)">Freestyle Script, 12pt</Value>
     </Setting>
+    <Setting Name="PermanentLisence" Type="System.String" Scope="User">
+      <Value Profile="(Default)">no</Value>
+    </Setting>
     <Setting Name="CongChungVien" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
   &lt;string&gt;Dương Phước Hoàng Khánh&lt;/string&gt;
   &lt;string&gt;Dương Bích Tuyền&lt;/string&gt;
+  &lt;string&gt;Võ Thị Bạch Tuyết&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="PermanentLisence" Type="System.String" Scope="User">
-      <Value Profile="(Default)">no</Value>
     </Setting>
   </Settings>
 </SettingsFile>
