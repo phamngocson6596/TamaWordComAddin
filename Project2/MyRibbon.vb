@@ -144,7 +144,7 @@ Public Class MyRibbon
         Dim soluongdem = SearchDocForPattern("TP/CC-SCC/HĐGD")
         If soluongdem = 1 Then
             Dim iRange As Word.Range = iApp.Selection.Range
-            Dim isoquyen As String = "quyển số " & Month(Today) & "/" & Year(Today) & " TP/CC-SCC/HĐGD"
+            Dim isoquyen As String = $"quyển số {Month(Today)}/{Year(Today)} TP/CC-SCC/HĐGD"
             iRange.Find.Execute(FindText:="quyển số*GD", ReplaceWith:=isoquyen, Forward:=False, MatchWildcards:=True)
         Else
         End If
@@ -262,7 +262,7 @@ Public Class MyRibbon
             Dim iRange2 As Word.Range = iDoc.Range(iRange.Start, iRange.End)
             Dim iKetqua As String = iRange.Text
 
-            Dim congchungvien As String = "Tôi, " & tencongchungvien & ", công chứng viên"
+            Dim congchungvien As String = $"Tôi, {tencongchungvien}, công chứng viên"
             iRange.Find.Execute(FindText:="Tôi*chứng viên", ReplaceWith:=congchungvien, Forward:=False, MatchWildcards:=True)
             iRange2.Find.Replacement.Font.Bold = True
             iRange2.Find.Execute(FindText:=tencongchungvien, ReplaceWith:=tencongchungvien, Forward:=False, MatchWildcards:=True)
@@ -301,7 +301,7 @@ Public Class MyRibbon
             .Font.Italic = False
             .Font.Name = "Times New Roman"
             .Font.Size = "13"
-            .Text = "CÔNG CHỨNG VIÊN" & vbCr & UCase(tencongchungvien)
+            .Text = $"CÔNG CHỨNG VIÊN{vbCr}{UCase(tencongchungvien)}"
             .Find.Replacement.ParagraphFormat.LineSpacingRule = Word.WdLineSpacing.wdLineSpaceSingle
             .Find.Execute(FindText:=tencongchungvien, ReplaceWith:=tencongchungvien, Forward:=False, MatchCase:=False)
         End With
@@ -312,7 +312,7 @@ ketthuc:
     End Sub
 
     Private Sub SettingGroup_ItemsLoading(sender As Object, e As RibbonControlEventArgs) Handles SettingGroup.ItemsLoading
-        DataLocationButton.SuperTip = "Thay đổi đường dẫn đến thư mục khách quen." & vbCr & "Đường dẫn hiện tại: " & My.Settings.DataLocation
+        DataLocationButton.SuperTip = $"Thay đổi đường dẫn đến thư mục khách quen.{vbCr}Đường dẫn hiện tại: {My.Settings.DataLocation}"
         If My.Settings.PermanentLisence = "I'm Tama" Then
             LsCheck.Label = "Permanent Lisence"
         Else
@@ -590,13 +590,12 @@ ketthuc:
 
     Private Sub DayWithTimeButton_Click(sender As Object, e As RibbonControlEventArgs) Handles DayWithTimeButton.Click
         Dim now As DateTime = DateTime.Now
-        Dim hour As Integer = now.Hour
-        Dim minute As Integer = now.Minute
+        Dim formattedTime As String = now.ToString("HH:mm")
 
         Dim ngay = NumtoStr(DateAndTime.Day(DateAndTime.Today))
         Dim thang As String = NumtoStr(Month(DateAndTime.Today))
         Dim nam As String = NumtoStr(Year(DateAndTime.Today))
-        Dim ngaythanghomnay As String = $"Hôm nay, vào lúc {hour} giờ {minute} phút, ngày {DateAndTime.Today.ToString("dd/MM/yyyy")} (ngày {Trim(ngay)} tháng {Trim(thang)}, năm {Trim(nam)})"
+        Dim ngaythanghomnay As String = $"Hôm nay, vào lúc {formattedTime.Split(":")(0)} giờ {formattedTime.Split(":")(1)} phút, ngày {DateAndTime.Today.ToString("dd/MM/yyyy")} (ngày {Trim(ngay)} tháng {Trim(thang)}, năm {Trim(nam)})"
 
         Call dienNgay(ngaythanghomnay)
 
