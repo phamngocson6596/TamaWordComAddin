@@ -12,6 +12,7 @@ Public Class MyRibbon
 
         iApp = Globals.ThisAddIn.Application
     End Sub
+
     Private Sub PageNumButton_Click(sender As Object, e As RibbonControlEventArgs) Handles PageNumButton.Click
         If Not IsLicenseValid() Then Exit Sub
 
@@ -104,36 +105,33 @@ Public Class MyRibbon
         My.Computer.Clipboard.SetText(MoneyText)
 
     End Sub
-
-    Private Sub NgayloichungButton_Click(sender As Object, e As RibbonControlEventArgs) Handles NgayloichungButton.Click, ChuaNgayButton.Click
+    Private Sub dienNgay(dateToReplace As String)
         If Not IsLicenseValid() Then Exit Sub
 
         Dim iDoc = iApp.ActiveDocument
         Dim objUndo As Word.UndoRecord = iApp.UndoRecord
         objUndo.StartCustomRecord("Ngày lời chứng")
 
-        Dim thang As String = NumtoStr(Month(Today))
-        Dim nam As String = NumtoStr(Year(Today))
-        Dim ngay As String
-        Dim ngaythanghomnay As String = ""
-        If sender Is ChuaNgayButton Then
-            ngay = StrDup(20, ".")
-            ngaythanghomnay = "Hôm nay, ngày " & StrDup(20, ".") & " (ngày " & Trim(ngay) & ", tháng " & Trim(thang) & ", năm " & Trim(nam) & ")"
-        Else
-            ngay = NumtoStr(DateAndTime.Day(Today))
-            ngaythanghomnay = "Hôm nay, ngày " & Today & " (ngày " & Trim(ngay) & ", tháng " & Trim(thang) & ", năm " & Trim(nam) & ")"
-        End If
         Dim soluongdem = SearchDocForPattern("^Hôm nay.*\(ngày.*?tháng.*?năm.*?\)")
         If soluongdem = 1 Then
             Dim iRange As Word.Range = iApp.Selection.Range
-            iRange.Find.Execute(FindText:="Hôm nay*\)", ReplaceWith:=ngaythanghomnay, Forward:=False, MatchWildcards:=True)
+            iRange.Find.Execute(FindText:="Hôm nay*\)", ReplaceWith:=dateToReplace, Forward:=False, MatchWildcards:=True)
         Else
             Dim imessage = MsgBox("Không định vị được chính xác vị trí, ngày tháng đã được lưu vào bộ nhớ tạm, bấm Ctrl+V để dán.")
-            My.Computer.Clipboard.SetText(ngaythanghomnay)
+            My.Computer.Clipboard.SetText(dateToReplace)
         End If
 
-
         objUndo.EndCustomRecord()
+
+    End Sub
+    Private Sub NgayloichungButton_Click(sender As Object, e As RibbonControlEventArgs) Handles NgayloichungButton.Click
+
+        Dim thang As String = NumtoStr(Month(Today))
+        Dim nam As String = NumtoStr(Year(Today))
+        Dim ngay As String = NumtoStr(DateAndTime.Day(Today))
+        Dim ngaythanghomnay As String = $"Hôm nay, ngày {DateAndTime.Today.ToString("dd/MM/yyyy")} (ngày {Trim(ngay)}, tháng {Trim(thang)}, năm {Trim(nam)})"
+
+        Call dienNgay(ngaythanghomnay)
 
     End Sub
     Private Sub SoQuyenButton_Click(sender As Object, e As RibbonControlEventArgs) Handles SoQuyenButton.Click
@@ -588,5 +586,28 @@ ketthuc:
         objUndo.EndCustomRecord()
         iApp.ScreenUpdating = True
 
+    End Sub
+
+    Private Sub DayWithTimeButton_Click(sender As Object, e As RibbonControlEventArgs) Handles DayWithTimeButton.Click
+        Dim now As DateTime = DateTime.Now
+        Dim hour As Integer = now.Hour
+        Dim minute As Integer = now.Minute
+
+        Dim ngay = NumtoStr(DateAndTime.Day(DateAndTime.Today))
+        Dim thang As String = NumtoStr(Month(DateAndTime.Today))
+        Dim nam As String = NumtoStr(Year(DateAndTime.Today))
+        Dim ngaythanghomnay As String = $"Hôm nay, vào lúc {hour} giờ {minute} phút, ngày {DateAndTime.Today.ToString("dd/MM/yyyy")} (ngày {Trim(ngay)} tháng {Trim(thang)}, năm {Trim(nam)})"
+
+        Call dienNgay(ngaythanghomnay)
+
+    End Sub
+
+    Private Sub ChuaNgayButton_Click(sender As Object, e As RibbonControlEventArgs) Handles ChuaNgayButton.Click
+        Dim thang As String = NumtoStr(Month(Today))
+        Dim nam As String = NumtoStr(Year(Today))
+        Dim ngay As String = StrDup(20, ".")
+        Dim ngaythanghomnay As String = $"Hôm nay, ngày {StrDup(20, ".")} (ngày {Trim(ngay)}, tháng {Trim(thang)}, năm {Trim(nam)})"
+
+        Call dienNgay(ngaythanghomnay)
     End Sub
 End Class

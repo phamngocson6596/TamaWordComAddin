@@ -46,11 +46,13 @@
         Me.Group1 = Me.Factory.CreateRibbonGroup
         Me.NgayloichungButton = Me.Factory.CreateRibbonSplitButton
         Me.ChuaNgayButton = Me.Factory.CreateRibbonButton
+        Me.DayWithTimeButton = Me.Factory.CreateRibbonButton
         Me.MoneyButton = Me.Factory.CreateRibbonButton
         Me.AuthorityButton = Me.Factory.CreateRibbonButton
         Me.CcvGroup = Me.Factory.CreateRibbonGallery
         Me.DPHKButton = Me.Factory.CreateRibbonButton
         Me.DBTButton = Me.Factory.CreateRibbonButton
+        Me.VTBTButton = Me.Factory.CreateRibbonButton
         Me.CcvBlandButton = Me.Factory.CreateRibbonButton
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.DayMonthButton = Me.Factory.CreateRibbonSplitButton
@@ -109,6 +111,7 @@
         Me.NgayloichungButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
         Me.NgayloichungButton.Image = Global.Project2.My.Resources.Resources.Calendar_icon
         Me.NgayloichungButton.Items.Add(Me.ChuaNgayButton)
+        Me.NgayloichungButton.Items.Add(Me.DayWithTimeButton)
         Me.NgayloichungButton.Label = "Ngày lời chứng"
         Me.NgayloichungButton.Name = "NgayloichungButton"
         '
@@ -117,6 +120,12 @@
         Me.ChuaNgayButton.Label = "Chừa ngày"
         Me.ChuaNgayButton.Name = "ChuaNgayButton"
         Me.ChuaNgayButton.ShowImage = True
+        '
+        'DayWithTimeButton
+        '
+        Me.DayWithTimeButton.Label = "Ngày và Giờ"
+        Me.DayWithTimeButton.Name = "DayWithTimeButton"
+        Me.DayWithTimeButton.ShowImage = True
         '
         'MoneyButton
         '
@@ -138,6 +147,7 @@
         '
         Me.CcvGroup.Buttons.Add(Me.DPHKButton)
         Me.CcvGroup.Buttons.Add(Me.DBTButton)
+        Me.CcvGroup.Buttons.Add(Me.VTBTButton)
         Me.CcvGroup.Buttons.Add(Me.CcvBlandButton)
         Me.CcvGroup.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
         Me.CcvGroup.Image = Global.Project2.My.Resources.Resources.User_icon
@@ -154,6 +164,11 @@
         '
         Me.DBTButton.Label = "Dương Bích Tuyền"
         Me.DBTButton.Name = "DBTButton"
+        '
+        'VTBTButton
+        '
+        Me.VTBTButton.Label = "Võ Thị Bạch Tuyết"
+        Me.VTBTButton.Name = "VTBTButton"
         '
         'CcvBlandButton
         '
@@ -417,6 +432,8 @@
     Friend WithEvents DropDown1 As Microsoft.Office.Tools.Ribbon.RibbonDropDown
     Friend WithEvents LsCheck As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents AuthorityButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents VTBTButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents DayWithTimeButton As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection
