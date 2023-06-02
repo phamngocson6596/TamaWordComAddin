@@ -5,7 +5,9 @@
       <section name="Project2.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
     </sectionGroup>
   </configSections>
-  <connectionStrings/>
+  <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source = |SQL/CE|"/>
+  </connectionStrings>
   <appSettings>
     <add key="DataLocation" value="Z:\z.kh\KH.accdb"/>
     <add key="TenThuKy" value="(Son)"/>
@@ -14,6 +16,7 @@
     <add key="TenThuKy_Font_Bold" value="False"/>
     <add key="TenThuKy_Font_Italic" value="False"/>
     <add key="ClientSettingsProvider.ServiceUri" value=""/>
+    <add key="ClientSettingsProvider.ConnectionStringName" value="DefaultConnection"/>
   </appSettings>
   <system.diagnostics>
     <sources>
@@ -44,33 +47,34 @@
         <value>(Son)</value>
       </setting>
       <setting name="DataLocation" serializeAs="String">
-        <value>\\192.168.1.30\ho so chung\z.kh\KH.accdb</value>
+        <value>C:\Users\tama\Desktop\KH.accdb</value>
       </setting>
       <setting name="TenThuKy_Font" serializeAs="String">
         <value>Freestyle Script, 12pt</value>
+      </setting>
+      <setting name="PermanentLisence" serializeAs="String">
+        <value>no</value>
       </setting>
       <setting name="CongChungVien" serializeAs="Xml">
         <value>
           <ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <string>Dương Phước Hoàng Khánh</string>
             <string>Dương Bích Tuyền</string>
+            <string>Võ Thị Bạch Tuyết</string>
           </ArrayOfString>
         </value>
-      </setting>
-      <setting name="PermanentLisence" serializeAs="String">
-        <value>no</value>
       </setting>
     </Project2.MySettings>
   </userSettings>
   <system.web>
     <membership defaultProvider="ClientAuthenticationMembershipProvider">
       <providers>
-        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri=""/>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" connectionStringName="DefaultConnection" credentialsProvider=""/>
       </providers>
     </membership>
     <roleManager defaultProvider="ClientRoleProvider" enabled="true">
       <providers>
-        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400"/>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" connectionStringName="DefaultConnection"/>
       </providers>
     </roleManager>
   </system.web>
