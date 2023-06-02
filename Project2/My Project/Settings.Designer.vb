@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.30\ho so chung\z.kh\KH.accdb")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\Users\tama\Desktop\KH.accdb")>  _
         Public Property DataLocation() As String
             Get
                 Return CType(Me("DataLocation"),String)

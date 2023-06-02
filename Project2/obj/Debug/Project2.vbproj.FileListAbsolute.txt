@@ -193,3 +193,34 @@ D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\Project2.vbproj.CopyCo
 D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\ProjectSub.dll
 D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\ProjectSub.xml
 D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\ProjectSub.pdb
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\ProjectSub.dll.config
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\ProjectSub.dll
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\ProjectSub.pdb
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\ProjectSub.xml
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\ProjectSub.dll.manifest
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\ProjectSub.vsto
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\GemBox.Document.dll
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\System.dll
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\BouncyCastle.Crypto.dll
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\System.xml
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\GemBox.Document.xml
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\bin\Debug\ADODB.dll
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.vbproj.AssemblyReference.cache
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.vbproj.ResolveComReference.cache
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.CalculateDate.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.DsFind.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.DsInfomationTable.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.LicenseForm.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.PYC.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.SotoSotrang.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.ChuKyForm.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.MyRibbon.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.MyPanel.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.Resources.resources
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.vbproj.GenerateResource.cache
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.vbproj.CoreCompileInputs.cache
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\Project2.vbproj.CopyComplete
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\ProjectSub.dll
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\ProjectSub.xml
+D:\OndriveRoaming\OneDrive - IT Software\Documents\GitHub\TamaWordComAddin\Project2\obj\Debug\ProjectSub.pdb

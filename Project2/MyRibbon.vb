@@ -316,7 +316,7 @@ ketthuc:
         If My.Settings.PermanentLisence = "I'm Tama" Then
             LsCheck.Label = "Permanent Lisence"
         Else
-            LsCheck.Label = "VPCC LHA"
+            LsCheck.Label = "TamaYama"
         End If
     End Sub
 
@@ -441,7 +441,7 @@ ketthuc:
         iForm.ShowDialog()
     End Sub
 
-    Private Sub SignButton_Click(sender As Object, e As RibbonControlEventArgs) Handles SignButton.Click
+    Private Sub SignButton_Click(sender As Object, e As RibbonControlEventArgs)
         'Dim files() As String = IO.Directory.GetFiles("Z:\z.kh\SignatureAuthority", "*pdf")
         Call ShowTaskpanel(iApp.ActiveDocument)
 
@@ -460,7 +460,7 @@ ketthuc:
         a.ShowDialog()
     End Sub
 
-    Private Sub AutoDateButton_Click(sender As Object, e As RibbonControlEventArgs) Handles AutoDateButton.Click
+    Private Sub AutoDateButton_Click(sender As Object, e As RibbonControlEventArgs)
         Dim a As New NotaryCustomer
         Dim i As String
         For Each pair As KeyValuePair(Of String, String) In a.GetPropertyValues
@@ -473,7 +473,7 @@ ketthuc:
     End Sub
 
     Private Function IsLicenseValid() As Boolean
-        IsLicenseValid = False
+        Return True
 
         Try
             Dim fileName As String

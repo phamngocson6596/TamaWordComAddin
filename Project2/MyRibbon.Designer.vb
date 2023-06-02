@@ -41,20 +41,23 @@
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MyRibbon))
         Me.Tab1 = Me.Factory.CreateRibbonTab
         Me.Group1 = Me.Factory.CreateRibbonGroup
+        Me.Group2 = Me.Factory.CreateRibbonGroup
+        Me.Group3 = Me.Factory.CreateRibbonGroup
+        Me.Separator2 = Me.Factory.CreateRibbonSeparator
+        Me.Group4 = Me.Factory.CreateRibbonGroup
+        Me.DatabaseLink = New System.Windows.Forms.OpenFileDialog()
+        Me.Label1 = Me.Factory.CreateRibbonLabel
+        Me.DropDown1 = Me.Factory.CreateRibbonDropDown
         Me.NgayloichungButton = Me.Factory.CreateRibbonSplitButton
         Me.ChuaNgayButton = Me.Factory.CreateRibbonButton
         Me.DayWithTimeButton = Me.Factory.CreateRibbonButton
         Me.MoneyButton = Me.Factory.CreateRibbonButton
         Me.AuthorityButton = Me.Factory.CreateRibbonButton
         Me.CcvGroup = Me.Factory.CreateRibbonGallery
-        Me.DPHKButton = Me.Factory.CreateRibbonButton
-        Me.DBTButton = Me.Factory.CreateRibbonButton
-        Me.VTBTButton = Me.Factory.CreateRibbonButton
+        Me.LCTButton = Me.Factory.CreateRibbonButton
         Me.CcvBlandButton = Me.Factory.CreateRibbonButton
-        Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.DayMonthButton = Me.Factory.CreateRibbonSplitButton
         Me.DayMonthButton1 = Me.Factory.CreateRibbonButton
         Me.DayMonthButton2 = Me.Factory.CreateRibbonButton
@@ -67,20 +70,12 @@
         Me.BlackNWhiteButton = Me.Factory.CreateRibbonButton
         Me.OngBaButton = Me.Factory.CreateRibbonButton
         Me.SotoSotrangButton = Me.Factory.CreateRibbonButton
-        Me.Group3 = Me.Factory.CreateRibbonGroup
         Me.DsFindButton = Me.Factory.CreateRibbonButton
-        Me.Separator2 = Me.Factory.CreateRibbonSeparator
         Me.DsAnalyzeButton = Me.Factory.CreateRibbonButton
-        Me.Group4 = Me.Factory.CreateRibbonGroup
-        Me.SignButton = Me.Factory.CreateRibbonButton
-        Me.AutoDateButton = Me.Factory.CreateRibbonButton
         Me.SettingGroup = Me.Factory.CreateRibbonGallery
         Me.DataLocationButton = Me.Factory.CreateRibbonButton
         Me.ScoutNameButton = Me.Factory.CreateRibbonButton
         Me.LsCheck = Me.Factory.CreateRibbonButton
-        Me.DatabaseLink = New System.Windows.Forms.OpenFileDialog()
-        Me.Label1 = Me.Factory.CreateRibbonLabel
-        Me.DropDown1 = Me.Factory.CreateRibbonDropDown
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -105,6 +100,50 @@
         Me.Group1.Items.Add(Me.CcvGroup)
         Me.Group1.Label = "Hay xài"
         Me.Group1.Name = "Group1"
+        '
+        'Group2
+        '
+        Me.Group2.Items.Add(Me.DayMonthButton)
+        Me.Group2.Items.Add(Me.PageNumButton)
+        Me.Group2.Items.Add(Me.SoQuyenButton)
+        Me.Group2.Items.Add(Me.LeMenu)
+        Me.Group2.Items.Add(Me.BlackNWhiteButton)
+        Me.Group2.Items.Add(Me.OngBaButton)
+        Me.Group2.Items.Add(Me.SotoSotrangButton)
+        Me.Group2.Label = "Phụ"
+        Me.Group2.Name = "Group2"
+        '
+        'Group3
+        '
+        Me.Group3.Items.Add(Me.DsFindButton)
+        Me.Group3.Items.Add(Me.Separator2)
+        Me.Group3.Items.Add(Me.DsAnalyzeButton)
+        Me.Group3.Label = "Khách quen"
+        Me.Group3.Name = "Group3"
+        '
+        'Separator2
+        '
+        Me.Separator2.Name = "Separator2"
+        '
+        'Group4
+        '
+        Me.Group4.Items.Add(Me.SettingGroup)
+        Me.Group4.Label = "Misc"
+        Me.Group4.Name = "Group4"
+        '
+        'DatabaseLink
+        '
+        Me.DatabaseLink.Filter = "MsAccess|*.accdb"
+        '
+        'Label1
+        '
+        Me.Label1.Label = "Label1"
+        Me.Label1.Name = "Label1"
+        '
+        'DropDown1
+        '
+        Me.DropDown1.Label = "DropDown1"
+        Me.DropDown1.Name = "DropDown1"
         '
         'NgayloichungButton
         '
@@ -145,9 +184,7 @@
         '
         'CcvGroup
         '
-        Me.CcvGroup.Buttons.Add(Me.DPHKButton)
-        Me.CcvGroup.Buttons.Add(Me.DBTButton)
-        Me.CcvGroup.Buttons.Add(Me.VTBTButton)
+        Me.CcvGroup.Buttons.Add(Me.LCTButton)
         Me.CcvGroup.Buttons.Add(Me.CcvBlandButton)
         Me.CcvGroup.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
         Me.CcvGroup.Image = Global.Project2.My.Resources.Resources.User_icon
@@ -155,37 +192,15 @@
         Me.CcvGroup.Name = "CcvGroup"
         Me.CcvGroup.ShowImage = True
         '
-        'DPHKButton
+        'LCTButton
         '
-        Me.DPHKButton.Label = "Dương Phước Hoàng Khánh"
-        Me.DPHKButton.Name = "DPHKButton"
-        '
-        'DBTButton
-        '
-        Me.DBTButton.Label = "Dương Bích Tuyền"
-        Me.DBTButton.Name = "DBTButton"
-        '
-        'VTBTButton
-        '
-        Me.VTBTButton.Label = "Võ Thị Bạch Tuyết"
-        Me.VTBTButton.Name = "VTBTButton"
+        Me.LCTButton.Label = "Lê Chí Thắng"
+        Me.LCTButton.Name = "LCTButton"
         '
         'CcvBlandButton
         '
         Me.CcvBlandButton.Label = "Chừa trống"
         Me.CcvBlandButton.Name = "CcvBlandButton"
-        '
-        'Group2
-        '
-        Me.Group2.Items.Add(Me.DayMonthButton)
-        Me.Group2.Items.Add(Me.PageNumButton)
-        Me.Group2.Items.Add(Me.SoQuyenButton)
-        Me.Group2.Items.Add(Me.LeMenu)
-        Me.Group2.Items.Add(Me.BlackNWhiteButton)
-        Me.Group2.Items.Add(Me.OngBaButton)
-        Me.Group2.Items.Add(Me.SotoSotrangButton)
-        Me.Group2.Label = "Phụ"
-        Me.Group2.Name = "Group2"
         '
         'DayMonthButton
         '
@@ -284,14 +299,6 @@
         Me.SotoSotrangButton.Name = "SotoSotrangButton"
         Me.SotoSotrangButton.ShowImage = True
         '
-        'Group3
-        '
-        Me.Group3.Items.Add(Me.DsFindButton)
-        Me.Group3.Items.Add(Me.Separator2)
-        Me.Group3.Items.Add(Me.DsAnalyzeButton)
-        Me.Group3.Label = "Khách quen"
-        Me.Group3.Name = "Group3"
-        '
         'DsFindButton
         '
         Me.DsFindButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
@@ -300,10 +307,6 @@
         Me.DsFindButton.Name = "DsFindButton"
         Me.DsFindButton.ShowImage = True
         '
-        'Separator2
-        '
-        Me.Separator2.Name = "Separator2"
-        '
         'DsAnalyzeButton
         '
         Me.DsAnalyzeButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
@@ -311,30 +314,6 @@
         Me.DsAnalyzeButton.Label = "Ghi"
         Me.DsAnalyzeButton.Name = "DsAnalyzeButton"
         Me.DsAnalyzeButton.ShowImage = True
-        '
-        'Group4
-        '
-        Me.Group4.Items.Add(Me.SignButton)
-        Me.Group4.Items.Add(Me.AutoDateButton)
-        Me.Group4.Items.Add(Me.SettingGroup)
-        Me.Group4.Label = "Misc"
-        Me.Group4.Name = "Group4"
-        '
-        'SignButton
-        '
-        Me.SignButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.SignButton.Image = Global.Project2.My.Resources.Resources.Firstline1_Movie_Mega_Pack_4_The_Bank_Job
-        Me.SignButton.Label = "Đăng ký chữ ký"
-        Me.SignButton.Name = "SignButton"
-        Me.SignButton.ShowImage = True
-        '
-        'AutoDateButton
-        '
-        Me.AutoDateButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.AutoDateButton.Image = CType(resources.GetObject("AutoDateButton.Image"), System.Drawing.Image)
-        Me.AutoDateButton.Label = "Tomato"
-        Me.AutoDateButton.Name = "AutoDateButton"
-        Me.AutoDateButton.ShowImage = True
         '
         'SettingGroup
         '
@@ -362,20 +341,6 @@
         Me.LsCheck.Label = "LsCheck"
         Me.LsCheck.Name = "LsCheck"
         '
-        'DatabaseLink
-        '
-        Me.DatabaseLink.Filter = "MsAccess|*.accdb"
-        '
-        'Label1
-        '
-        Me.Label1.Label = "Label1"
-        Me.Label1.Name = "Label1"
-        '
-        'DropDown1
-        '
-        Me.DropDown1.Label = "DropDown1"
-        Me.DropDown1.Name = "DropDown1"
-        '
         'MyRibbon
         '
         Me.Name = "MyRibbon"
@@ -397,7 +362,6 @@
 
     Friend WithEvents Tab1 As Microsoft.Office.Tools.Ribbon.RibbonTab
     Friend WithEvents Group1 As Microsoft.Office.Tools.Ribbon.RibbonGroup
-    Friend WithEvents AutoDateButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents MoneyButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents PageNumButton As Microsoft.Office.Tools.Ribbon.RibbonButton
@@ -410,8 +374,7 @@
     Friend WithEvents SoQuyenButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group4 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents CcvGroup As Microsoft.Office.Tools.Ribbon.RibbonGallery
-    Friend WithEvents DPHKButton As Microsoft.Office.Tools.Ribbon.RibbonButton
-    Friend WithEvents DBTButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents LCTButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents CcvBlandButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents DsFindButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents DsAnalyzeButton As Microsoft.Office.Tools.Ribbon.RibbonButton
@@ -427,13 +390,11 @@
     Friend WithEvents LeMiniButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents BlackNWhiteButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents OngBaButton As Microsoft.Office.Tools.Ribbon.RibbonButton
-    Friend WithEvents SignButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents SotoSotrangButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents DropDown1 As Microsoft.Office.Tools.Ribbon.RibbonDropDown
-    Friend WithEvents LsCheck As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents AuthorityButton As Microsoft.Office.Tools.Ribbon.RibbonButton
-    Friend WithEvents VTBTButton As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents DayWithTimeButton As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents LsCheck As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

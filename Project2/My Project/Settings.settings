@@ -6,7 +6,7 @@
       <Value Profile="(Default)">(Son)</Value>
     </Setting>
     <Setting Name="DataLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\192.168.1.30\ho so chung\z.kh\KH.accdb</Value>
+      <Value Profile="(Default)">C:\Users\tama\Desktop\KH.accdb</Value>
     </Setting>
     <Setting Name="TenThuKy_Font" Type="System.Drawing.Font" Scope="User">
       <Value Profile="(Default)">Freestyle Script, 12pt</Value>
