@@ -193,3 +193,4 @@ D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\Project2.vbproj.CopyCo
 D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\ProjectSub.dll
 D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\ProjectSub.xml
 D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\ProjectSub.pdb
+D:\Program Files\GitHub\myWordComAddin\Project2\obj\Debug\Project2.QRAnalyzer.resources

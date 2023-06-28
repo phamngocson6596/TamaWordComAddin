@@ -461,12 +461,8 @@ ketthuc:
     End Sub
 
     Private Sub AutoDateButton_Click(sender As Object, e As RibbonControlEventArgs) Handles AutoDateButton.Click
-        Dim a As New NotaryCustomer
-        Dim i As String
-        For Each pair As KeyValuePair(Of String, String) In a.GetPropertyValues
-            i &= pair.Key & " ; " & pair.Value & vbCr
-        Next
-        MsgBox(i)
+        Dim a As New QRAnalyzer
+        a.Show()
     End Sub
 
     Private Sub CcvGroup_ItemsLoading(sender As Object, e As RibbonControlEventArgs) Handles CcvGroup.ItemsLoading

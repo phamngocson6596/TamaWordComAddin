@@ -255,6 +255,12 @@
     <Compile Include="PYC.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="QRAnalyzer.Designer.vb">
+      <DependentUpon>QRAnalyzer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="QRAnalyzer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Tenthuky.Designer.vb">
       <DependentUpon>Tenthuky.vb</DependentUpon>
     </Compile>
@@ -296,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PYC.resx">
       <DependentUpon>PYC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QRAnalyzer.resx">
+      <DependentUpon>QRAnalyzer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SotoSotrang.resx">
       <DependentUpon>SotoSotrang.vb</DependentUpon>
