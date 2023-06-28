@@ -461,12 +461,16 @@ ketthuc:
     End Sub
 
     Private Sub AutoDateButton_Click(sender As Object, e As RibbonControlEventArgs) Handles AutoDateButton.Click
-        Dim a As New NotaryCustomer
-        Dim i As String
-        For Each pair As KeyValuePair(Of String, String) In a.GetPropertyValues
-            i &= pair.Key & " ; " & pair.Value & vbCr
-        Next
-        MsgBox(i)
+        If Not IsLicenseValid() Then Exit Sub
+
+        Call DeleteTaskPanel(iApp.ActiveDocument)
+        Call ShowTaskpanel(iApp.ActiveDocument)
+        Dim NewCustomTaskPane As Microsoft.Office.Tools.CustomTaskPane = ThisAddIn.AddinCustomTaskPanes(iApp.ActiveDocument)
+
+        Dim iPanel As Control = New QRcode With {
+            .Left = 3, .Top = 8}
+
+        NewCustomTaskPane.Control.Controls.Add(iPanel)
     End Sub
 
     Private Sub CcvGroup_ItemsLoading(sender As Object, e As RibbonControlEventArgs) Handles CcvGroup.ItemsLoading
