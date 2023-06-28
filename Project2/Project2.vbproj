@@ -140,6 +140,9 @@
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="GemBox.Document, Version=35.0.0.1163, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
       <HintPath>..\packages\GemBox.Document.35.0.1163\lib\net35\GemBox.Document.dll</HintPath>
     </Reference>
@@ -165,6 +168,12 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="WindowsBase" />
+    <Reference Include="zxing, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net461\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net461\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -255,12 +264,6 @@
     <Compile Include="PYC.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="QRAnalyzer.Designer.vb">
-      <DependentUpon>QRAnalyzer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="QRAnalyzer.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="QRcode.Designer.vb">
       <DependentUpon>QRcode.vb</DependentUpon>
     </Compile>
@@ -308,9 +311,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PYC.resx">
       <DependentUpon>PYC.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QRAnalyzer.resx">
-      <DependentUpon>QRAnalyzer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QRcode.resx">
       <DependentUpon>QRcode.vb</DependentUpon>

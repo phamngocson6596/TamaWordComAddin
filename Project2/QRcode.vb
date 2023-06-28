@@ -1,7 +1,8 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.Drawing
+Imports System.Text.RegularExpressions
 Imports System.Windows.Forms
 Imports Microsoft.Office.Interop.Word
-
+Imports ZXing
 
 Public Class QRcode
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -65,5 +66,65 @@ Public Class QRcode
 
     Private Sub TextBox1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseDoubleClick
         TextBox1.SelectAll()
+    End Sub
+
+    Private Sub TextBox1_DragDrop(sender As Object, e As DragEventArgs) Handles TextBox1.DragDrop
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            Dim filePath As String = files(0) ' Assuming only one file is dropped
+
+            ' Read the QR code
+            Dim barcodeReader As New BarcodeReader()
+            Dim result As Result = barcodeReader.Decode(New Bitmap(filePath))
+
+            If result IsNot Nothing Then
+                Dim qrCodeText As String = result.Text
+                TextBox1.Text = qrCodeText
+            Else
+                Label1.Text = "Failed to read QR code"
+            End If
+        End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim a As New OpenFileDialog
+        a.ShowDialog()
+        Dim filePath = a.FileName.ToString()
+        Dim barcodeReader As New BarcodeReader()
+        Dim result As Result = barcodeReader.Decode(New Bitmap(filePath))
+
+        If result IsNot Nothing Then
+            Dim qrCodeText As String = result.Text
+            TextBox1.Text = qrCodeText
+        Else
+            Label1.Text = "Failed to read QR code"
+        End If
+
+    End Sub
+
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    Private Sub PictureBox1_DragDrop(sender As Object, e As DragEventArgs) Handles PictureBox1.DragDrop
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            Dim filePath As String = files(0) ' Assuming only one file is dropped
+
+            ' Display the dragged image
+            PictureBox1.Image = Image.FromFile(filePath)
+
+            ' Read the QR code
+            Dim barcodeReader As New BarcodeReader()
+            Dim result As Result = barcodeReader.Decode(DirectCast(PictureBox1.Image, Bitmap))
+
+            If result IsNot Nothing Then
+                Dim qrCodeText As String = result.Text
+                Label1.Text = qrCodeText
+            Else
+                Label1.Text = "Failed to read QR code"
+            End If
+        End If
     End Sub
 End Class
