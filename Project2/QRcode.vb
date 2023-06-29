@@ -1,4 +1,5 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.Drawing
+Imports System.Text.RegularExpressions
 Imports System.Windows.Forms
 Imports Microsoft.Office.Interop.Word
 
@@ -8,8 +9,10 @@ Public Class QRcode
         Dim result As String = QrAnalyzer(TextBox1.Text)
         If result = "Sai định dạng" Then
             Label1.Text = "Sai định dạng"
+            Label1.BackColor = Color.MistyRose
         Else
             Label1.Text = "Thành công"
+            Label1.BackColor = Color.LightBlue
         End If
     End Sub
     Private Function QrAnalyzer(text As String) As String
