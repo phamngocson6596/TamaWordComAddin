@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="Project2.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+    </sectionGroup>
+  </configSections>
+  <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source = |SQL/CE|"/>
+  </connectionStrings>
+  <appSettings>
+    <add key="DataLocation" value="Z:\z.kh\KH.accdb"/>
+    <add key="TenThuKy" value="(Son)"/>
+    <add key="TenThuKy_Font_Name" value="Freestyle Script"/>
+    <add key="TenThuKy_Font_Size" value="12"/>
+    <add key="TenThuKy_Font_Bold" value="False"/>
+    <add key="TenThuKy_Font_Italic" value="False"/>
+    <add key="ClientSettingsProvider.ServiceUri" value=""/>
+    <add key="ClientSettingsProvider.ConnectionStringName" value="DefaultConnection"/>
+  </appSettings>
+  <system.diagnostics>
+    <sources>
+      <!-- This section defines the logging configuration for My.Application.Log -->
+      <source name="DefaultSource" switchName="DefaultSwitch">
+        <listeners>
+          <add name="FileLog"/>
+          <!-- Uncomment the below section to write to the Application Event Log -->
+          <!--<add name="EventLog"/>-->
+        </listeners>
+      </source>
+    </sources>
+    <switches>
+      <add name="DefaultSwitch" value="Information"/>
+    </switches>
+    <sharedListeners>
+      <add name="FileLog" type="Microsoft.VisualBasic.Logging.FileLogTraceListener, Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" initializeData="FileLogWriter"/>
+      <!-- Uncomment the below section and replace APPLICATION_NAME with the name of your application to write to the Application Event Log -->
+      <!--<add name="EventLog" type="System.Diagnostics.EventLogTraceListener" initializeData="APPLICATION_NAME"/> -->
+    </sharedListeners>
+  </system.diagnostics>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.2"/>
+  </startup>
+  <userSettings>
+    <Project2.MySettings>
+      <setting name="TenThuKy" serializeAs="String">
+        <value>(Son)</value>
+      </setting>
+      <setting name="DataLocation" serializeAs="String">
+        <value>\\192.168.1.30\ho so chung\z.kh\KH.accdb</value>
+      </setting>
+      <setting name="TenThuKy_Font" serializeAs="String">
+        <value>Freestyle Script, 12pt</value>
+      </setting>
+      <setting name="PermanentLisence" serializeAs="String">
+        <value>no</value>
+      </setting>
+      <setting name="CongChungVien" serializeAs="Xml">
+        <value>
+          <ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <string>Dương Phước Hoàng Khánh</string>
+            <string>Dương Bích Tuyền</string>
+            <string>Võ Thị Bạch Tuyết</string>
+          </ArrayOfString>
+        </value>
+      </setting>
+    </Project2.MySettings>
+  </userSettings>
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" connectionStringName="DefaultConnection" credentialsProvider=""/>
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" connectionStringName="DefaultConnection"/>
+      </providers>
+    </roleManager>
+  </system.web>
+</configuration>
