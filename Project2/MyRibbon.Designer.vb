@@ -44,13 +44,6 @@
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MyRibbon))
         Me.Tab1 = Me.Factory.CreateRibbonTab
         Me.Group1 = Me.Factory.CreateRibbonGroup
-        Me.Group2 = Me.Factory.CreateRibbonGroup
-        Me.Group3 = Me.Factory.CreateRibbonGroup
-        Me.Separator2 = Me.Factory.CreateRibbonSeparator
-        Me.Group4 = Me.Factory.CreateRibbonGroup
-        Me.DatabaseLink = New System.Windows.Forms.OpenFileDialog()
-        Me.Label1 = Me.Factory.CreateRibbonLabel
-        Me.DropDown1 = Me.Factory.CreateRibbonDropDown
         Me.NgayloichungButton = Me.Factory.CreateRibbonSplitButton
         Me.ChuaNgayButton = Me.Factory.CreateRibbonButton
         Me.DayWithTimeButton = Me.Factory.CreateRibbonButton
@@ -61,6 +54,7 @@
         Me.DBTButton = Me.Factory.CreateRibbonButton
         Me.VTBTButton = Me.Factory.CreateRibbonButton
         Me.CcvBlandButton = Me.Factory.CreateRibbonButton
+        Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.DayMonthButton = Me.Factory.CreateRibbonSplitButton
         Me.DayMonthButton1 = Me.Factory.CreateRibbonButton
         Me.DayMonthButton2 = Me.Factory.CreateRibbonButton
@@ -73,8 +67,11 @@
         Me.BlackNWhiteButton = Me.Factory.CreateRibbonButton
         Me.OngBaButton = Me.Factory.CreateRibbonButton
         Me.SotoSotrangButton = Me.Factory.CreateRibbonButton
+        Me.Group3 = Me.Factory.CreateRibbonGroup
         Me.DsFindButton = Me.Factory.CreateRibbonButton
+        Me.Separator2 = Me.Factory.CreateRibbonSeparator
         Me.DsAnalyzeButton = Me.Factory.CreateRibbonButton
+        Me.Group4 = Me.Factory.CreateRibbonGroup
         Me.QrButton = Me.Factory.CreateRibbonButton
         Me.SignButton = Me.Factory.CreateRibbonButton
         Me.AutoDateButton = Me.Factory.CreateRibbonButton
@@ -82,6 +79,9 @@
         Me.DataLocationButton = Me.Factory.CreateRibbonButton
         Me.ScoutNameButton = Me.Factory.CreateRibbonButton
         Me.LsCheck = Me.Factory.CreateRibbonButton
+        Me.DatabaseLink = New System.Windows.Forms.OpenFileDialog()
+        Me.Label1 = Me.Factory.CreateRibbonLabel
+        Me.DropDown1 = Me.Factory.CreateRibbonDropDown
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -106,53 +106,6 @@
         Me.Group1.Items.Add(Me.CcvGroup)
         Me.Group1.Label = "Hay xài"
         Me.Group1.Name = "Group1"
-        '
-        'Group2
-        '
-        Me.Group2.Items.Add(Me.DayMonthButton)
-        Me.Group2.Items.Add(Me.PageNumButton)
-        Me.Group2.Items.Add(Me.SoQuyenButton)
-        Me.Group2.Items.Add(Me.LeMenu)
-        Me.Group2.Items.Add(Me.BlackNWhiteButton)
-        Me.Group2.Items.Add(Me.OngBaButton)
-        Me.Group2.Items.Add(Me.SotoSotrangButton)
-        Me.Group2.Label = "Phụ"
-        Me.Group2.Name = "Group2"
-        '
-        'Group3
-        '
-        Me.Group3.Items.Add(Me.DsFindButton)
-        Me.Group3.Items.Add(Me.Separator2)
-        Me.Group3.Items.Add(Me.DsAnalyzeButton)
-        Me.Group3.Label = "Khách quen"
-        Me.Group3.Name = "Group3"
-        '
-        'Separator2
-        '
-        Me.Separator2.Name = "Separator2"
-        '
-        'Group4
-        '
-        Me.Group4.Items.Add(Me.QrButton)
-        Me.Group4.Items.Add(Me.SignButton)
-        Me.Group4.Items.Add(Me.AutoDateButton)
-        Me.Group4.Items.Add(Me.SettingGroup)
-        Me.Group4.Label = "Misc"
-        Me.Group4.Name = "Group4"
-        '
-        'DatabaseLink
-        '
-        Me.DatabaseLink.Filter = "MsAccess|*.accdb"
-        '
-        'Label1
-        '
-        Me.Label1.Label = "Label1"
-        Me.Label1.Name = "Label1"
-        '
-        'DropDown1
-        '
-        Me.DropDown1.Label = "DropDown1"
-        Me.DropDown1.Name = "DropDown1"
         '
         'NgayloichungButton
         '
@@ -222,6 +175,18 @@
         '
         Me.CcvBlandButton.Label = "Chừa trống"
         Me.CcvBlandButton.Name = "CcvBlandButton"
+        '
+        'Group2
+        '
+        Me.Group2.Items.Add(Me.DayMonthButton)
+        Me.Group2.Items.Add(Me.PageNumButton)
+        Me.Group2.Items.Add(Me.SoQuyenButton)
+        Me.Group2.Items.Add(Me.LeMenu)
+        Me.Group2.Items.Add(Me.BlackNWhiteButton)
+        Me.Group2.Items.Add(Me.OngBaButton)
+        Me.Group2.Items.Add(Me.SotoSotrangButton)
+        Me.Group2.Label = "Phụ"
+        Me.Group2.Name = "Group2"
         '
         'DayMonthButton
         '
@@ -320,6 +285,14 @@
         Me.SotoSotrangButton.Name = "SotoSotrangButton"
         Me.SotoSotrangButton.ShowImage = True
         '
+        'Group3
+        '
+        Me.Group3.Items.Add(Me.DsFindButton)
+        Me.Group3.Items.Add(Me.Separator2)
+        Me.Group3.Items.Add(Me.DsAnalyzeButton)
+        Me.Group3.Label = "Khách quen"
+        Me.Group3.Name = "Group3"
+        '
         'DsFindButton
         '
         Me.DsFindButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
@@ -328,6 +301,10 @@
         Me.DsFindButton.Name = "DsFindButton"
         Me.DsFindButton.ShowImage = True
         '
+        'Separator2
+        '
+        Me.Separator2.Name = "Separator2"
+        '
         'DsAnalyzeButton
         '
         Me.DsAnalyzeButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
@@ -335,6 +312,15 @@
         Me.DsAnalyzeButton.Label = "Ghi"
         Me.DsAnalyzeButton.Name = "DsAnalyzeButton"
         Me.DsAnalyzeButton.ShowImage = True
+        '
+        'Group4
+        '
+        Me.Group4.Items.Add(Me.QrButton)
+        Me.Group4.Items.Add(Me.SignButton)
+        Me.Group4.Items.Add(Me.AutoDateButton)
+        Me.Group4.Items.Add(Me.SettingGroup)
+        Me.Group4.Label = "Misc"
+        Me.Group4.Name = "Group4"
         '
         'QrButton
         '
@@ -385,6 +371,20 @@
         '
         Me.LsCheck.Label = "LsCheck"
         Me.LsCheck.Name = "LsCheck"
+        '
+        'DatabaseLink
+        '
+        Me.DatabaseLink.Filter = "MsAccess|*.accdb"
+        '
+        'Label1
+        '
+        Me.Label1.Label = "Label1"
+        Me.Label1.Name = "Label1"
+        '
+        'DropDown1
+        '
+        Me.DropDown1.Label = "DropDown1"
+        Me.DropDown1.Name = "DropDown1"
         '
         'MyRibbon
         '

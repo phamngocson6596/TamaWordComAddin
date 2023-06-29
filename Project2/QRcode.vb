@@ -10,35 +10,41 @@ Public Class QRcode
         If result = "Sai định dạng" Then
             Label1.Text = "Sai định dạng"
             Label1.BackColor = Color.MistyRose
-        Else
-            Label1.Text = "Thành công"
-            Label1.BackColor = Color.LightBlue
         End If
     End Sub
     Private Function QrAnalyzer(text As String) As String
-        Dim regex As Regex = New Regex("^(?<cccd>\d+)\|(?<cmnd>\d*)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d+)$")
-        Dim match As Match = regex.Match(text.TrimEnd)
+        Dim regex As Regex = New Regex("\b(?<cccd>\d{12})\|(?<cmnd>\d*)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d+)\b")
+        'Dim match As Match = regex.Match(text.TrimEnd)
+        Dim matches = regex.Matches(text.TrimEnd)
 
-        If match.Success Then
-            Dim customer As New NotaryCustomer
-            customer.CCCD = match.Groups("cccd").Value
-            customer.CMND = match.Groups("cmnd").Value
-            customer.Ten = match.Groups("name").Value.ToUpper()
-            customer.Sn = match.Groups("YoB").Value
-            customer.TT = match.Groups("address").Value
+        Dim result As String = ""
 
-            If match.Groups("sex").Value = "Nam" Then
-                customer.Gt = "Ông"
-            Else
-                customer.Gt = "Bà"
-            End If
+        If matches.Count > 0 Then
+            Label1.Text = $"Thành công. Số lượng: {matches.Count}"
+            Label1.BackColor = Color.LightBlue
+            For Each match In matches
+                Dim customer As New NotaryCustomer
+                customer.CCCD = match.Groups("cccd").Value
+                customer.CMND = match.Groups("cmnd").Value
+                customer.Ten = match.Groups("name").Value.ToUpper()
+                customer.Sn = match.Groups("YoB").Value
+                customer.TT = match.Groups("address").Value
 
-            Dim final As String = customer.ExportCustomer()
-            customer = Nothing
-            Return final
+                If match.Groups("sex").Value = "Nam" Then
+                    customer.Gt = "Ông"
+                Else
+                    customer.Gt = "Bà"
+                End If
+
+                result &= $"{customer.ExportCustomer()}{vbCr}"
+                customer = Nothing
+            Next
         Else
             Return "Sai định dạng"
         End If
+
+        Return result.TrimEnd
+
     End Function
 
 
@@ -90,9 +96,10 @@ Public Class QRcode
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim a As New OpenFileDialog
-        a.ShowDialog()
+        If a.ShowDialog() = DialogResult.Cancel Then Exit Sub
         Dim filePath = a.FileName.ToString()
         Dim barcodeReader As New BarcodeReader()
+
         Dim result As Result = barcodeReader.Decode(New Bitmap(filePath))
 
         If result IsNot Nothing Then
