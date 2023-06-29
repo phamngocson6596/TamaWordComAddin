@@ -9,8 +9,10 @@ Public Class QRcode
         Dim result As String = QrAnalyzer(TextBox1.Text)
         If result = "Sai định dạng" Then
             Label1.Text = "Sai định dạng"
+            Label1.BackColor = Color.MistyRose
         Else
             Label1.Text = "Thành công"
+            Label1.BackColor = Color.LightBlue
         End If
     End Sub
     Private Function QrAnalyzer(text As String) As String
@@ -96,35 +98,38 @@ Public Class QRcode
         If result IsNot Nothing Then
             Dim qrCodeText As String = result.Text
             TextBox1.Text = qrCodeText
+            Label1.Text = "Thành công"
+            Label1.BackColor = Color.LightBlue
         Else
             Label1.Text = "Failed to read QR code"
+            Label1.BackColor = Color.MistyRose
         End If
 
     End Sub
 
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub PictureBox1_DragDrop(sender As Object, e As DragEventArgs) Handles PictureBox1.DragDrop
+    Private Sub PictureBox1_DragDrop(sender As Object, e As DragEventArgs)
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
             Dim filePath As String = files(0) ' Assuming only one file is dropped
 
             ' Display the dragged image
-            PictureBox1.Image = Image.FromFile(filePath)
+            'PictureBox1.Image = Image.FromFile(filePath)
 
             ' Read the QR code
             Dim barcodeReader As New BarcodeReader()
-            Dim result As Result = barcodeReader.Decode(DirectCast(PictureBox1.Image, Bitmap))
+            'Dim result As Result = barcodeReader.Decode(DirectCast(PictureBox1.Image, Bitmap))
 
-            If result IsNot Nothing Then
-                Dim qrCodeText As String = result.Text
-                Label1.Text = qrCodeText
-            Else
-                Label1.Text = "Failed to read QR code"
-            End If
+            'If result IsNot Nothing Then
+            'Dim qrCodeText As String = result.Text
+            'Label1.Text = qrCodeText
+            'Else
+            'Label1.Text = "Failed to read QR code"
+            'End If
         End If
     End Sub
 End Class
