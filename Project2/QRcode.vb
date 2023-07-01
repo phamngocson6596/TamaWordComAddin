@@ -3,6 +3,8 @@ Imports System.Text.RegularExpressions
 Imports System.Windows.Forms
 Imports Microsoft.Office.Interop.Word
 Imports ZXing
+Imports MongoDB.Bson
+Imports MongoDB.Driver
 
 Public Class QRcode
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -46,11 +48,6 @@ Public Class QRcode
         Return result.TrimEnd
 
     End Function
-
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        My.Computer.Clipboard.SetText(QrAnalyzer(TextBox1.Text))
-    End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
@@ -115,10 +112,6 @@ Public Class QRcode
     End Sub
 
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub PictureBox1_DragDrop(sender As Object, e As DragEventArgs)
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -138,5 +131,44 @@ Public Class QRcode
             'Label1.Text = "Failed to read QR code"
             'End If
         End If
+    End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'My.Computer.Clipboard.SetText(QrAnalyzer(TextBox1.Text))
+
+        MongodbTesting()
+
+    End Sub
+    Sub MongodbTesting()
+        ' Configure the MongoDB connection string and database name
+        Dim connectionString As String = "mongodb+srv://tama:tama@tama.kzznzu2.mongodb.net/"
+        Dim databaseName As String = "mydatabaseTesting"
+
+        ' Create a MongoClient to connect to the MongoDB server
+        Dim client As New MongoClient(connectionString)
+
+        ' Get a reference to the database
+        Dim database As IMongoDatabase = client.GetDatabase(databaseName)
+
+        ' Get a reference to the collection
+        Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("mycollection")
+
+        ' Insert a document
+        Dim document As New BsonDocument()
+        document.Add("name", "John Doe")
+        document.Add("age", 30)
+        collection.InsertOne(document)
+
+        ' Find documents
+        Dim filter As New BsonDocument("name", "John Doe")
+        Dim result = collection.Find(filter).ToList()
+
+        ' Update a document
+        Dim updateFilter As New BsonDocument("name", "John Doe")
+        Dim update As New BsonDocument("$set", New BsonDocument("age", 35))
+        collection.UpdateOne(updateFilter, update)
+
+        ' Delete a document
+        'Dim deleteFilter As New BsonDocument("name", "John Doe")
+        'collection.DeleteOne(deleteFilter)
     End Sub
 End Class
