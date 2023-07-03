@@ -164,9 +164,9 @@ Public Class QRcode
         If existingDocument IsNot Nothing Then
             ' Update the existing document
             Dim updateFilter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.AnyEq("_id", existingDocument("_id"))
-            Dim update As UpdateDefinition(Of BsonDocument) = Builders(Of BsonDocument).Update.Set("name", newDocument("name"))
+            'Dim update As UpdateDefinition(Of BsonDocument) = Builders(Of BsonDocument).Update.Set("name", newDocument("name"))
 
-            collection.UpdateOne(updateFilter, update)
+            'collection.UpdateOne(updateFilter, update)
 
             Console.WriteLine("Document updated successfully.")
         Else
