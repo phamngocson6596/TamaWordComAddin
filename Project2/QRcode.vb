@@ -16,8 +16,7 @@ Public Class QRcode
         End If
     End Sub
     Private Function QrAnalyzer(text As String) As String
-        Dim regex As Regex = New Regex("\b(?<cccd>\d{12})\|(?<cmnd>\d*)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d+)\b")
-        'Dim match As Match = regex.Match(text.TrimEnd)
+        Dim regex As Regex = New Regex("(?<cccd>\d{12})\|(?<cmnd>\d{9}?)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d{8})")
         Dim matches = regex.Matches(text.TrimEnd)
 
         Dim result As String = ""

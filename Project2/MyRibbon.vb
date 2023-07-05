@@ -144,7 +144,7 @@ Public Class MyRibbon
         Dim soluongdem = SearchDocForPattern("TP/CC-SCC/HĐGD")
         If soluongdem = 1 Then
             Dim iRange As Word.Range = iApp.Selection.Range
-            Dim isoquyen As String = $"quyển số {Month(Today)}/{Year(Today)} TP/CC-SCC/HĐGD"
+            Dim isoquyen As String = $"quyển số {DateTime.Now.ToString("MM/yyyy")} TP/CC-SCC/HĐGD"
             iRange.Find.Execute(FindText:="quyển số*GD", ReplaceWith:=isoquyen, Forward:=False, MatchWildcards:=True)
         Else
         End If
