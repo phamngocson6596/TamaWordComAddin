@@ -24,10 +24,13 @@ Partial Class QRcode
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PasteToDoc = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.DsListview = New System.Windows.Forms.ListView()
+        Me.TenColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.SnColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.CmtColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.SearchBox = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -42,23 +45,13 @@ Partial Class QRcode
         '
         'PasteToDoc
         '
-        Me.PasteToDoc.Location = New System.Drawing.Point(4, 262)
+        Me.PasteToDoc.Location = New System.Drawing.Point(4, 185)
         Me.PasteToDoc.Margin = New System.Windows.Forms.Padding(4)
         Me.PasteToDoc.Name = "PasteToDoc"
-        Me.PasteToDoc.Size = New System.Drawing.Size(164, 28)
+        Me.PasteToDoc.Size = New System.Drawing.Size(164, 33)
         Me.PasteToDoc.TabIndex = 5
         Me.PasteToDoc.Text = "Dán vào văn bản"
         Me.PasteToDoc.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(224, 262)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(164, 28)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Lưu vào bộ nhớ tạm"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
@@ -83,30 +76,57 @@ Partial Class QRcode
         Me.Button3.Text = "QR"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'ListBox1
+        'DsListview
         '
-        Me.ListBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(163, Byte))
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Location = New System.Drawing.Point(7, 309)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(380, 164)
-        Me.ListBox1.TabIndex = 9
+        Me.DsListview.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.TenColumn, Me.SnColumn, Me.CmtColumn})
+        Me.DsListview.FullRowSelect = True
+        Me.DsListview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
+        Me.DsListview.HideSelection = False
+        Me.DsListview.Location = New System.Drawing.Point(4, 258)
+        Me.DsListview.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.DsListview.MultiSelect = False
+        Me.DsListview.Name = "DsListview"
+        Me.DsListview.Size = New System.Drawing.Size(383, 196)
+        Me.DsListview.TabIndex = 9
+        Me.DsListview.UseCompatibleStateImageBehavior = False
+        Me.DsListview.View = System.Windows.Forms.View.Details
+        '
+        'TenColumn
+        '
+        Me.TenColumn.Text = "Tên"
+        Me.TenColumn.Width = 123
+        '
+        'SnColumn
+        '
+        Me.SnColumn.Text = "Sn"
+        Me.SnColumn.Width = 38
+        '
+        'CmtColumn
+        '
+        Me.CmtColumn.Text = "CMT"
+        Me.CmtColumn.Width = 116
+        '
+        'SearchBox
+        '
+        Me.SearchBox.Location = New System.Drawing.Point(4, 459)
+        Me.SearchBox.Name = "SearchBox"
+        Me.SearchBox.Size = New System.Drawing.Size(384, 22)
+        Me.SearchBox.TabIndex = 10
         '
         'QRcode
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.SearchBox)
+        Me.Controls.Add(Me.DsListview)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PasteToDoc)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "QRcode"
-        Me.Size = New System.Drawing.Size(400, 540)
+        Me.Size = New System.Drawing.Size(400, 520)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -114,8 +134,11 @@ Partial Class QRcode
 
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents PasteToDoc As Windows.Forms.Button
-    Friend WithEvents Button1 As Windows.Forms.Button
     Friend WithEvents TextBox1 As Windows.Forms.TextBox
     Friend WithEvents Button3 As Windows.Forms.Button
-    Friend WithEvents ListBox1 As Windows.Forms.ListBox
+    Friend WithEvents DsListview As Windows.Forms.ListView
+    Friend WithEvents TenColumn As Windows.Forms.ColumnHeader
+    Friend WithEvents SnColumn As Windows.Forms.ColumnHeader
+    Friend WithEvents CmtColumn As Windows.Forms.ColumnHeader
+    Friend WithEvents SearchBox As Windows.Forms.TextBox
 End Class
