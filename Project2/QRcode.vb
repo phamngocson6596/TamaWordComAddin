@@ -6,18 +6,29 @@ Imports ZXing
 Imports MongoDB.Bson
 Imports MongoDB.Driver
 Imports MongoDB.Driver.Core.Configuration
+Imports System.Threading
+Imports System.Windows.Controls
 
 Public Class QRcode
+
+    Dim mainRegex As Regex = New Regex("(?<cccd>\d{12})\|(?<cmnd>(\d{9})?)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d{8})")
+
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         Dim result As String = QrAnalyzer(TextBox1.Text)
         If result = "Sai định dạng" Then
             Label1.Text = "Sai định dạng"
             Label1.BackColor = Color.MistyRose
+            Exit Sub
         End If
+        LoadQR()
     End Sub
+    Private Sub QRcode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadQR()
+
+    End Sub
+
     Private Function QrAnalyzer(text As String) As String
-        Dim regex As Regex = New Regex("(?<cccd>\d{12})\|(?<cmnd>(\d{9})?)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d{8})")
-        Dim matches = regex.Matches(text.TrimEnd)
+        Dim matches = mainRegex.Matches(text.TrimEnd)
 
         Dim result As String = ""
 
@@ -40,6 +51,7 @@ Public Class QRcode
 
                 result &= $"{customer.ExportCustomer()}{vbCr}"
                 customer = Nothing
+                SaveQR(match.ToString)
             Next
         Else
             Return "Sai định dạng"
@@ -49,7 +61,7 @@ Public Class QRcode
 
     End Function
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub PasteClick(sender As Object, e As EventArgs) Handles PasteToDoc.Click
 
         Dim iApp = Globals.ThisAddIn.Application
 
@@ -69,37 +81,83 @@ Public Class QRcode
         iRange.Text = QrAnalyzer(TextBox1.Text)
     End Sub
 
+    Private cts As CancellationTokenSource = Nothing ' CancellationTokenSource to cancel the previous action
+
+    Private Async Sub LoadQR()
+        ' Cancel the previous action if it's running
+        If cts IsNot Nothing Then
+            cts.Cancel()
+        End If
+
+        ' Create a new CancellationTokenSource
+        cts = New CancellationTokenSource()
+
+        Try
+            Dim client As New MongoClient("mongodb+srv://tama:tama@tama.kzznzu2.mongodb.net/")
+            Dim database As IMongoDatabase = client.GetDatabase("Notary")
+            Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("QRcode")
+
+            Dim documents As List(Of BsonDocument) = Await System.Threading.Tasks.Task.Run(
+                Function()
+                    ' Retrieve the newest 20 records from the collection
+                    Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Empty
+                    Dim sort As SortDefinition(Of BsonDocument) = Builders(Of BsonDocument).Sort.Descending("_id")
+                    Return collection.Find(filter).Sort(sort).Limit(20).ToList()
+                End Function,
+            cts.Token) ' Pass the CancellationToken to the Task.Run method
+
+            ' Update the ListBox with the retrieved records on the UI thread
+            ListBox1.Invoke(
+                Sub()
+                    ListBox1.Items.Clear()
+
+                    For Each document As BsonDocument In documents
+                        Dim qrCode As String = document.GetValue("QRcode").ToString()
+                        ListBox1.Items.Add(qrCode)
+                    Next
+                End Sub)
+        Catch ex As OperationCanceledException
+            ' The operation was canceled, handle as needed
+            Console.WriteLine("Previous action was canceled.")
+        Finally
+            ' Reset the CancellationTokenSource
+            cts = Nothing
+        End Try
+    End Sub
+
     Private Sub TextBox1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TextBox1.MouseDoubleClick
         TextBox1.SelectAll()
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim a As New OpenFileDialog
-        If a.ShowDialog() = DialogResult.Cancel Then Exit Sub
-        Dim filePath = a.FileName.ToString()
-        Dim barcodeReader As New BarcodeReader()
+    Private Sub SaveQR(text As String)
+        Dim matches = mainRegex.Matches(text.TrimEnd)
 
-        Dim result As Result = barcodeReader.Decode(New Bitmap(filePath))
+        If matches.Count = 0 Then Exit Sub
 
-        If result IsNot Nothing Then
-            Dim qrCodeText As String = result.Text
-            TextBox1.Text = qrCodeText
-            Label1.Text = "Thành công"
-            Label1.BackColor = Color.LightBlue
+        Dim client As New MongoClient("mongodb+srv://tama:tama@tama.kzznzu2.mongodb.net/")
+        Dim database As IMongoDatabase = client.GetDatabase("Notary")
+        Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("QRcode")
+
+        ' Build the filter to check if the QR code exists
+        Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of String)("QRcode", text)
+
+        ' Find the document that matches the filter
+        Dim existingDocument As BsonDocument = collection.Find(filter).FirstOrDefault()
+
+        If existingDocument Is Nothing Then
+            Dim newRecord As BsonDocument = New BsonDocument()
+            newRecord("QRcode") = text
+            newRecord("CreatedDate") = DateTime.Now
+
+            collection.InsertOne(newRecord)
+
+            Console.WriteLine("New record saved successfully.")
         Else
-            Label1.Text = "Failed to read QR code"
-            Label1.BackColor = Color.MistyRose
+            Console.WriteLine("QR code already exists in the collection.")
         End If
 
     End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'My.Computer.Clipboard.SetText(QrAnalyzer(TextBox1.Text))
-
-        'MongodbTesting()
-
-    End Sub
-    Private Sub SaveQr(text As String)
+    Private Sub SaveQrxxx(text As String)
         Dim regex As Regex = New Regex("\b(?<cccd>\d{12})\|(?<cmnd>\d*)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d+)\b")
         Dim match As Match = regex.Match(text.TrimEnd)
 
@@ -133,6 +191,33 @@ Public Class QRcode
 
 
     End Sub
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim a As New OpenFileDialog
+        If a.ShowDialog() = DialogResult.Cancel Then Exit Sub
+        Dim filePath = a.FileName.ToString()
+        Dim barcodeReader As New BarcodeReader()
+
+        Dim result As Result = barcodeReader.Decode(New Bitmap(filePath))
+
+        If result IsNot Nothing Then
+            Dim qrCodeText As String = result.Text
+            TextBox1.Text = qrCodeText
+            Label1.Text = "Thành công"
+            Label1.BackColor = Color.LightBlue
+        Else
+            Label1.Text = "Failed to read QR code"
+            Label1.BackColor = Color.MistyRose
+        End If
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'My.Computer.Clipboard.SetText(QrAnalyzer(TextBox1.Text))
+
+        'MongodbTesting()
+
+    End Sub
+
     Public Shared Sub Main(args As String())
         ' Configure the MongoDB connection string and database name
         Dim connectionString As String = "mongodb://localhost:27017"
@@ -175,37 +260,5 @@ Public Class QRcode
             Console.WriteLine("Document inserted successfully.")
         End If
     End Sub
-    Sub MongodbTesting()
-        ' Configure the MongoDB connection string and database name
-        Dim connectionString As String = "mongodb+srv://tama:tama@tama.kzznzu2.mongodb.net/"
-        Dim databaseName As String = "mydatabaseTesting"
 
-        ' Create a MongoClient to connect to the MongoDB server
-        Dim client As New MongoClient(connectionString)
-
-        ' Get a reference to the database
-        Dim database As IMongoDatabase = client.GetDatabase(databaseName)
-
-        ' Get a reference to the collection
-        Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("mycollection")
-
-        ' Insert a document
-        Dim document As New BsonDocument()
-        document.Add("name", "John Doe")
-        document.Add("age", 30)
-        collection.InsertOne(document)
-
-        ' Find documents
-        Dim filter As New BsonDocument("name", "John Doe")
-        Dim result = collection.Find(filter).ToList()
-
-        ' Update a document
-        Dim updateFilter As New BsonDocument("name", "John Doe")
-        Dim update As New BsonDocument("$set", New BsonDocument("age", 35))
-        collection.UpdateOne(updateFilter, update)
-
-        ' Delete a document
-        'Dim deleteFilter As New BsonDocument("name", "John Doe")
-        'collection.DeleteOne(deleteFilter)
-    End Sub
 End Class
