@@ -11,15 +11,30 @@ Public Class QRcode
 
     Dim mainRegex As Regex = New Regex("(?<cccd>\d{12})\|(?<cmnd>(\d{9})?)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>(\d{8})?)", RegexOptions.IgnoreCase)
 
-    Dim client As New MongoClient("mongodb+srv://tama:tama@tama.kzznzu2.mongodb.net/")
-    Dim database As IMongoDatabase = client.GetDatabase("Notary")
-    Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("QRcode")
+    Private client As MongoClient
+    Private database As IMongoDatabase
+    Private collection As IMongoCollection(Of BsonDocument)
+
+    Private Function InitializeMongoDB() As Boolean
+        ' Create the MongoDB client and obtain the database and collection
+        Try
+            client = New MongoClient("mongodb+srv://tama:tama@tama.kzznzu2.mongodb.net/")
+            database = client.GetDatabase("Notary")
+            collection = database.GetCollection(Of BsonDocument)("QRcode")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return False
+        End Try
+
+        Return True
+    End Function
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         Dim matches = mainRegex.Matches(TextBox1.Text)
         If matches.Count > 0 Then
             Label1.Text = $"Thành công. Số lượng: {matches.Count}"
             Label1.BackColor = Color.LightBlue
+            InitializeMongoDB()
             For Each match In matches
                 SaveQR(match.value.ToString)
             Next
@@ -45,7 +60,7 @@ Public Class QRcode
                 customer.Sn = match.Groups("YoB").Value
                 customer.TT = match.Groups("address").Value
 
-                If match.Groups("sex").Value = "Nam" Then
+                If match.Groups("sex").Value.ToString.ToLower = "nam" Then
                     customer.Gt = "Ông"
                 Else
                     customer.Gt = "Bà"
@@ -202,7 +217,7 @@ Public Class QRcode
         TextBox1.SelectAll()
     End Sub
     Private Sub QRcode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Load20FirstQR()
+        'Load20FirstQR()
         'LoadAllQRDocuments()
     End Sub
     Private Sub DsListview_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles DsListview.MouseDoubleClick
@@ -279,4 +294,9 @@ Public Class QRcode
 
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If Not InitializeMongoDB() Then Exit Sub
+
+        Load20FirstQR()
+    End Sub
 End Class

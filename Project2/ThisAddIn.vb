@@ -34,6 +34,8 @@ Public Class ThisAddIn
         End Try
     End Sub
     Private Sub ThisAddIn_Shutdown() Handles Me.Shutdown
+
+        'Me.CustomTaskPanes.Dispose()
         'https://learn.microsoft.com/en-us/visualstudio/vsto/deploying-a-vsto-solution-by-using-windows-installer?view=vs-2022
         'https://learn.microsoft.com/en-us/visualstudio/vsto/deploying-an-office-solution-by-using-clickonce?view=vs-2022&tabs=vb
     End Sub
