@@ -15,19 +15,17 @@ Public Class QRcode
     Private database As IMongoDatabase
     Private collection As IMongoCollection(Of BsonDocument)
 
-    Private Function InitializeMongoDB() As Boolean
-        ' Create the MongoDB client and obtain the database and collection
+    Private Sub InitializeMongoDB()
         Try
+            ' Create the MongoDB client and obtain the database and collection
             client = New MongoClient("mongodb+srv://tama:tama@tama.kzznzu2.mongodb.net/")
             database = client.GetDatabase("Notary")
             collection = database.GetCollection(Of BsonDocument)("QRcode")
         Catch ex As Exception
-            MsgBox(ex.Message)
-            Return False
+            ' Handle the exception appropriately
+            Console.WriteLine("Failed to initialize MongoDB: " & ex.Message)
         End Try
-
-        Return True
-    End Function
+    End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         Dim matches = mainRegex.Matches(TextBox1.Text)
@@ -119,7 +117,6 @@ Public Class QRcode
         cts = New CancellationTokenSource()
 
         Try
-
             Dim documents As List(Of BsonDocument) = Await System.Threading.Tasks.Task.Run(
                 Function()
                     ' Retrieve the newest 20 records from the collection
@@ -217,7 +214,8 @@ Public Class QRcode
         TextBox1.SelectAll()
     End Sub
     Private Sub QRcode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Load20FirstQR()
+        InitializeMongoDB()
+        Load20FirstQR()
         'LoadAllQRDocuments()
     End Sub
     Private Sub DsListview_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles DsListview.MouseDoubleClick
@@ -295,8 +293,16 @@ Public Class QRcode
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If Not InitializeMongoDB() Then Exit Sub
+        'If Not InitializeMongoDB() Then Exit Sub
 
-        Load20FirstQR()
+        'Load20FirstQR()
+    End Sub
+
+    Private Sub QRcode_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+        'client = Nothing
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+        client = Nothing
     End Sub
 End Class
