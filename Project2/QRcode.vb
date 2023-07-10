@@ -240,48 +240,6 @@ Public Class QRcode
         DsListview.EndUpdate()
     End Sub
 
-    Public Shared Sub Main(args As String())
-        ' Configure the MongoDB connection string and database name
-        Dim connectionString As String = "mongodb://localhost:27017"
-        Dim databaseName As String = "mydatabase"
-
-        ' Create a MongoClient to connect to the MongoDB server
-        Dim client As New MongoClient(connectionString)
-
-        ' Get a reference to the database
-        Dim database As IMongoDatabase = client.GetDatabase(databaseName)
-
-        ' Get a reference to the collection
-        Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("mycollection")
-
-        ' Create the new document
-        Dim newDocument As New BsonDocument()
-        newDocument.Add("name", "BÙI MINH TRƯỜNG")
-        newDocument.Add("sex", "Ông")
-        newDocument.Add("YoB", "1969")
-        newDocument.Add("IDcard", New BsonDocument("CCCD", "012069000031").Add("CMND", "024370572"))
-        newDocument.Add("address", "29/27 Đoàn Thị Điểm, Phường 1, quận Phú Nhuận, TP. Hồ Chí Minh")
-
-        ' Check if a user with matching ID card exists
-        Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.AnyEq("IDcard.CCCD", "012069000031") Or
-                                                        Builders(Of BsonDocument).Filter.AnyEq("IDcard.CMND", "024370572")
-        Dim existingDocument As BsonDocument = collection.Find(filter).FirstOrDefault()
-
-        If existingDocument IsNot Nothing Then
-            ' Update the existing document
-            Dim updateFilter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.AnyEq("_id", existingDocument("_id"))
-            'Dim update As UpdateDefinition(Of BsonDocument) = Builders(Of BsonDocument).Update.Set("name", newDocument("name"))
-
-            'collection.UpdateOne(updateFilter, update)
-
-            Console.WriteLine("Document updated successfully.")
-        Else
-            ' Insert the new document
-            collection.InsertOne(newDocument)
-
-            Console.WriteLine("Document inserted successfully.")
-        End If
-    End Sub
     Private Sub SaveQrxxx(text As String)
         Dim regex As Regex = New Regex("\b(?<cccd>\d{12})\|(?<cmnd>\d*)\|(?<name>[^|]+)\|\d{4}(?<YoB>\d{4})\|(?<sex>(Nam|Nữ))\|(?<address>[^|]+)\|(?<dateOfIssue>\d+)\b")
         Dim match As Match = regex.Match(text.TrimEnd)
